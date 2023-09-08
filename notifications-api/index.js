@@ -3,14 +3,14 @@ const amqp = require("amqplib");
 
 const app = express();
 
-const accountSid = "AC2d698b700eca92aeba0cd40782912052";
-const authToken = "1957dd81f876286a2f0dff86c9caaaf4";
+const accountSid = process.env.TWILIO_ACCOUNT_SID//  "AC2d698b700eca92aeba0cd40782912052";
+const authToken =  process.env.TWILIO_AUTH_TOKEN // "1957dd81f876286a2f0dff86c9caaaf4";
 const client = require("twilio")(accountSid, authToken);
 
 async function connect() {
   try {
     const connection = await amqp.connect(
-      "amqp://rabbitmq-cluster-ip-service:5672"
+      `amqp://${process.env.RABBITMQ_HOST}:${process.env.RABBITMQ_PORT}`
     );
     const channel = await connection.createChannel();
     const result = channel.assertQueue("jobs");
@@ -19,7 +19,7 @@ async function connect() {
       client.messages
         .create({
           body: "Your order is out for delivery",
-          from: "+18334893511",
+          from: process.env.TWILIO_NUMBER,
           to: message.content.toString(),
         })
         .then((message) => console.log(message.sid))
@@ -36,5 +36,5 @@ async function connect() {
 connect();
 
 app.listen(5001, () => {
-  console.log("Listening on PORT 5000");
+  console.log("Listening on PORT 5001");
 });
