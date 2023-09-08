@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notifications-api
-          image: laithharb/notifications-api:v2
+          image: edwardkemper/notifications-api
           ports:
             - containerPort: 5001
           env:

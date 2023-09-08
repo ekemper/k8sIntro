@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: products-api
-          image: laithharb/products-api:v2
+          image: edwardkemper/product-api
           ports:
             - containerPort: 5002
           env:
