@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: rabbitmq-cluster-ip-service
 spec:
-  selector: 
+  selector:
     component: rabbitmq
   ports:
     - name: rabbitmq

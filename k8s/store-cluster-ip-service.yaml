@@ -4,8 +4,8 @@ metadata:
   name: store-cluster-ip-service
 spec:
   type: ClusterIP
-  ports: 
+  ports:
     - port: 80
       targetPort: 80
-  selector: 
+  selector:
     component: store

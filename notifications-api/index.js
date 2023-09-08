@@ -3,8 +3,8 @@ const amqp = require("amqplib");
 
 const app = express();
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID//  "AC2d698b700eca92aeba0cd40782912052";
-const authToken =  process.env.TWILIO_AUTH_TOKEN // "1957dd81f876286a2f0dff86c9caaaf4";
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken =  process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
 async function connect() {

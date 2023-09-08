@@ -1,43 +1,19 @@
-
-#  --> for the pod configuration, this is used. 
-# --> note the file was renamed from store-pod.yaml to store-deployment.yaml
-
-
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: store-app
-#   labels:
-#     component: store
-# spec:
-#   containers:
-#     - name: store
-#       image: edwardkemper/store-app
-#       ports: 
-#         - containerPort: 80
-
-
-
-#  -- > here is the deployment configuration -->
-
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: store
 spec:
-  replicas: 3   # number of pods to run
-  selector: 
-    matchLabels: 
+  replicas: 2
+  selector:
+    matchLabels:
       component: store
-  template: # defining the pod that the deployment will manage
+  template: # We are defining the pod that the deployment manage
     metadata:
       labels:
-        component: store # the label that the deployment matches to 
+        component: store
     spec:
       containers:
         - name: store
-          image: edwardkemper/store-app
+          image: laithharb/store-app
           ports:
             - containerPort: 80
-
-

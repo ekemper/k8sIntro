@@ -4,8 +4,8 @@ metadata:
   name: products-api-cluster-ip-service
 spec:
   type: ClusterIP
-  selector: 
-    component: product-api
+  selector:
+    component: products-api
   ports:
     - port: 5002
       targetPort: 5002

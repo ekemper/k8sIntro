@@ -11,9 +11,28 @@ spec:
     metadata:
       labels:
         component: notifications-api
-    spec: 
+    spec:
       containers:
         - name: notifications-api
-          image: edwardkemper/notifications-api
+          image: laithharb/notifications-api:v2
           ports:
             - containerPort: 5001
+          env:
+            - name: TWILIO_ACCOUNT_SID
+              valueFrom:
+                secretKeyRef:
+                  name: twilio-secret
+                  key: TWILIO_ACCOUNT_SID
+            - name: TWILIO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: twilio-secret
+                  key: TWILIO_AUTH_TOKEN
+            - name: TWILIO_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: twilio-secret
+                  key: TWILIO_NUMBER
+          envFrom:
+            - configMapRef:
+                name: rabbitmq-configmap
