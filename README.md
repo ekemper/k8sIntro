@@ -6,6 +6,24 @@ creating secrets:
     `
 
 
+updating image for prod deployment in k8s cluster:
+`kubectl set image deployment/store store=edwardkemper/store-app:v2`
+
+
+here are the steps that the CD pipeline will take:
+* login to aws for access to the k8s cluster
+* login to docker hub to get and push images
+* build image
+* push image to docker hub
+* install kubectl
+* set kubectl context
+* set the deployment image
+* re- apply the deployment confi in the EKS context
+
+
+# some data for testing
+
+
 
 {
   "product": {
