@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: products-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       component: products-api

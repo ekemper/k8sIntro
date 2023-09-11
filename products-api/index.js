@@ -14,6 +14,7 @@ app.use(cors());
 
 app.get("/products", async (req, res) => {
   const products = await Product.find();
+  console.log("called get products")
   return res.status(200).json({
     products,
   });
@@ -83,7 +84,8 @@ app.get("/orders", async (req, res) => {
 });
 
 mongoose.connect(
-  `mongodb://${process.env.MONGODB_HOST}/products`,
+  // `mongodb://${process.env.MONGODB_HOST}/products`,
+  `mongodb+srv://mongo-user:FCApZ2Gc1lzj59Gy@cluster0.kbanpuh.mongodb.net/?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -100,3 +102,5 @@ mongoose.connect(
     }
   }
 );
+
+
